@@ -48,15 +48,15 @@ export function HeroSection() {
 
           {/* Right Image */}
           <div className="animate-fade-in-delay relative">
-            <div className="relative aspect-[4/3] lg:aspect-[3/4] rounded-lg overflow-hidden">
+            <div className="relative aspect-[4/3] lg:aspect-square rounded-lg overflow-hidden shadow-xl">
               <Image
-                src="/images/tea-garden-hero.jpg"
-                alt={t('চা বাগানের দৃশ্য', 'Tea garden landscape')}
+                src="/images/tea-flower-hero.jpg"
+                alt={t('চা ফুল - চা গাছের সাদা ফুল', 'Tea flower - white blossoms of the tea plant')}
                 fill
                 className="object-cover"
                 priority
               />
-              <div className="absolute inset-0 bg-tea-green/10"></div>
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal/20 to-transparent"></div>
             </div>
             {/* Floating accent */}
             <div className="absolute -bottom-4 -left-4 w-24 h-24 bg-gold/20 rounded-full blur-2xl"></div>
