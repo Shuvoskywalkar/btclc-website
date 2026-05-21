@@ -22,8 +22,8 @@ export function AboutSection() {
           </h2>
           <p className="text-charcoal-light text-lg leading-relaxed mb-8">
             {t(
-              'বাংলাদেশ চা জনগোষ্ঠী সাহিত্য পরিষদ একটি অলাভজনক সাহিত্য ও সাংস্কৃতিক সংগঠন যা চা শ্রমিক ও তাদের বংশধরদের সাহিত্যিক কণ্ঠস্বর সংরক্ষণ ও প্রচারে নিবেদিত। আমরা বিশ্বাস করি প্রতিটি সম্প্রদায়ের নিজস্ব গল্প আছে যা বলা দরকার।',
-              'Bangladesh Tea Community Literature Council is a non-profit literary and cultural organization dedicated to preserving and promoting the literary voices of tea workers and their descendants. We believe every community has stories that deserve to be told.'
+              'বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সংগঠন যা চা-জনগোষ্ঠীর মধ্যে সাহিত্য, সংস্কৃতি ও সামাজিক সচেতনতার চর্চাকে প্রাতিষ্ঠানিকীকরণ করতে এবং তাদের জ্ঞানভিত্তিক সক্ষমতা, সাংস্কৃতিক পরিচয় ও সামাজিক অংশগ্রহণকে সুসংহত করতে কাজ করে।',
+              'Bangladesh Tea Community Literature Council is a non-political, non-profit, and volunteer organization working to institutionalize the practice of literature, culture, and social awareness among the tea community, and to consolidate their knowledge-based capacity, cultural identity, and social participation.'
             )}
           </p>
           <Link

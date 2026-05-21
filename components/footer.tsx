@@ -1,8 +1,9 @@
 "use client"
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useLanguage } from '@/lib/language-context'
-import { Facebook, Twitter, Mail, Phone, MapPin } from 'lucide-react'
+import { Facebook, Mail, Phone, MapPin } from 'lucide-react'
 
 export function Footer() {
   const { language, t } = useLanguage()
@@ -23,38 +24,40 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-12 h-12 bg-tea-green rounded-full flex items-center justify-center">
-                <span className="text-cream font-serif text-xl font-bold">চা</span>
-              </div>
+              <Image
+                src="/images/btclc-logo.png"
+                alt="BTCLC Logo"
+                width={48}
+                height={48}
+                className="w-12 h-12"
+              />
               <div>
                 <p className="font-serif text-cream text-base font-semibold leading-tight">
-                  {t('বাংলাদেশ চা জনগোষ্ঠী সাহিত্য পরিষদ', 'Bangladesh Tea Community Literature Council')}
+                  {t('বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ', 'Bangladesh Tea Community Literature Council')}
+                </p>
+                <p className="text-cream/60 text-xs mt-0.5">
+                  {t('অরাজনৈতিক | অলাভজনক | স্বেচ্ছাসেবী', 'Non-Political | Non-Profit | Volunteer')}
                 </p>
               </div>
             </div>
             <p className="text-cream/70 text-sm leading-relaxed max-w-md mb-6">
               {t(
-                'চা জনগোষ্ঠীর সাহিত্যিক ও সাংস্কৃতিক পরিচয় সংরক্ষণ, বিকাশ ও বিস্তারে নিবেদিত।',
-                'Dedicated to preserving, developing, and amplifying the literary and cultural identity of the tea community.'
+                'চা-জনগোষ্ঠীর মধ্যে সাহিত্যচর্চা, সাংস্কৃতিক বিকাশ এবং সামাজিক সচেতনতা বৃদ্ধির জন্য একটি অন্তর্ভুক্তিমূলক ও টেকসই প্ল্যাটফর্ম।',
+                'An inclusive and sustainable platform for literature, cultural development, and social awareness among the tea community.'
               )}
             </p>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://facebook.com/btclc.official"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 bg-cream/10 hover:bg-tea-green rounded-full flex items-center justify-center transition-colors"
                 aria-label="Facebook"
               >
                 <Facebook size={18} />
               </a>
               <a
-                href="#"
-                className="w-10 h-10 bg-cream/10 hover:bg-tea-green rounded-full flex items-center justify-center transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter size={18} />
-              </a>
-              <a
-                href="mailto:info@btclc.org"
+                href="mailto:btclc.official@gmail.com"
                 className="w-10 h-10 bg-cream/10 hover:bg-tea-green rounded-full flex items-center justify-center transition-colors"
                 aria-label="Email"
               >
@@ -90,15 +93,15 @@ export function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-3 text-cream/70 text-sm">
                 <MapPin size={16} className="mt-0.5 shrink-0" />
-                <span>{t('শ্রীমঙ্গল, মৌলভীবাজার, সিলেট, বাংলাদেশ', 'Sreemangal, Moulvibazar, Sylhet, Bangladesh')}</span>
+                <span>{t('সাত্তার মঞ্জিল, উকিলবাড়ী রোড, শ্রীমঙ্গল, মৌলভীবাজার', 'Sattar Monjil, Ukilbari Road, Sreemangal, Moulvibazar')}</span>
               </li>
               <li className="flex items-center gap-3 text-cream/70 text-sm">
                 <Phone size={16} className="shrink-0" />
-                <span>+880 1XXX-XXXXXX</span>
+                <span>+880 1791-751501</span>
               </li>
               <li className="flex items-center gap-3 text-cream/70 text-sm">
                 <Mail size={16} className="shrink-0" />
-                <span>info@btclc.org</span>
+                <span>btclc.official@gmail.com</span>
               </li>
             </ul>
           </div>
@@ -109,8 +112,8 @@ export function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-cream/50 text-sm">
               {t(
-                '© ২০২৪ বাংলাদেশ চা জনগোষ্ঠী সাহিত্য পরিষদ। সর্বস্বত্ব সংরক্ষিত।',
-                '© 2024 Bangladesh Tea Community Literature Council. All rights reserved.'
+                '© ২০২৬ বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ। সর্বস্বত্ব সংরক্ষিত।',
+                '© 2026 Bangladesh Tea Community Literature Council. All rights reserved.'
               )}
             </p>
             <div className="flex gap-6">

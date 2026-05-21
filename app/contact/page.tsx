@@ -3,7 +3,7 @@
 import { LanguageProvider, useLanguage } from '@/lib/language-context'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { Mail, Phone, MapPin, Clock, Facebook, Twitter, Send } from 'lucide-react'
+import { Mail, Phone, MapPin, Clock, Facebook, Send } from 'lucide-react'
 
 function ContactContent() {
   const { t } = useLanguage()
@@ -49,8 +49,8 @@ function ContactContent() {
                     <h3 className="font-medium text-charcoal mb-1">{t('ঠিকানা', 'Address')}</h3>
                     <p className="text-charcoal-light text-sm">
                       {t(
-                        'শ্রীমঙ্গল, মৌলভীবাজার, সিলেট বিভাগ, বাংলাদেশ',
-                        'Sreemangal, Moulvibazar, Sylhet Division, Bangladesh'
+                        'সাত্তার মঞ্জিল, উকিলবাড়ী রোড(আ/এ), শ্রীমঙ্গল, মৌলভীবাজার, বাংলাদেশ',
+                        'Sattar Monjil, Ukilbari Road (A/A), Sreemangal, Moulvibazar, Bangladesh'
                       )}
                     </p>
                   </div>
@@ -62,7 +62,7 @@ function ContactContent() {
                   </div>
                   <div>
                     <h3 className="font-medium text-charcoal mb-1">{t('ফোন', 'Phone')}</h3>
-                    <p className="text-charcoal-light text-sm">+880 1XXX-XXXXXX</p>
+                    <p className="text-charcoal-light text-sm">+880 1791-751501</p>
                   </div>
                 </div>
 
@@ -72,8 +72,7 @@ function ContactContent() {
                   </div>
                   <div>
                     <h3 className="font-medium text-charcoal mb-1">{t('ইমেইল', 'Email')}</h3>
-                    <p className="text-charcoal-light text-sm">info@btclc.org</p>
-                    <p className="text-charcoal-light text-sm">utkorsha@btclc.org</p>
+                    <p className="text-charcoal-light text-sm">btclc.official@gmail.com</p>
                   </div>
                 </div>
 
@@ -100,18 +99,13 @@ function ContactContent() {
                 </h3>
                 <div className="flex gap-3">
                   <a
-                    href="#"
+                    href="https://facebook.com/btclc.official"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="w-10 h-10 bg-tea-green/10 hover:bg-tea-green rounded-lg flex items-center justify-center transition-colors group"
                     aria-label="Facebook"
                   >
                     <Facebook className="w-5 h-5 text-tea-green group-hover:text-cream transition-colors" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-10 h-10 bg-tea-green/10 hover:bg-tea-green rounded-lg flex items-center justify-center transition-colors group"
-                    aria-label="Twitter"
-                  >
-                    <Twitter className="w-5 h-5 text-tea-green group-hover:text-cream transition-colors" />
                   </a>
                 </div>
               </div>

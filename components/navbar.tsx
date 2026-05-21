@@ -1,6 +1,7 @@
 "use client"
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { useState } from 'react'
 import { useLanguage } from '@/lib/language-context'
 import { Menu, X } from 'lucide-react'
@@ -24,12 +25,16 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 md:w-12 md:h-12 bg-tea-green rounded-full flex items-center justify-center">
-              <span className="text-cream font-serif text-lg md:text-xl font-bold">চা</span>
-            </div>
+            <Image
+              src="/images/btclc-logo.png"
+              alt="BTCLC Logo"
+              width={48}
+              height={48}
+              className="w-10 h-10 md:w-12 md:h-12"
+            />
             <div className="hidden sm:block">
               <p className="font-serif text-tea-green text-sm md:text-base font-semibold leading-tight">
-                {t('বাংলাদেশ চা জনগোষ্ঠী', 'Bangladesh Tea Community')}
+                {t('বাংলাদেশ চা-জনগোষ্ঠী', 'Bangladesh Tea Community')}
               </p>
               <p className="font-serif text-tea-green text-xs md:text-sm leading-tight">
                 {t('সাহিত্য পরিষদ', 'Literature Council')}

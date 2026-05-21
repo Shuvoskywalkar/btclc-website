@@ -14,6 +14,9 @@ export function HeroSection() {
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Content */}
           <div className="animate-fade-in">
+            <p className="text-gold font-medium text-sm uppercase tracking-wider mb-4">
+              {t('প্রতিষ্ঠিত ২০২৬', 'Established 2026')}
+            </p>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl text-charcoal leading-tight mb-6 text-balance">
               {t(
                 'প্রান্তের কণ্ঠকে সাহিত্যের মূলধারায়',
@@ -22,8 +25,8 @@ export function HeroSection() {
             </h1>
             <p className="text-charcoal-light text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
               {t(
-                'বাংলাদেশ চা জনগোষ্ঠী সাহিত্য পরিষদ (BTCLC) চা জনগোষ্ঠীর সাহিত্যিক ও সাংস্কৃতিক পরিচয় সংরক্ষণ, বিকাশ ও বিস্তারে নিবেদিত। প্রকাশনা, সংলাপ ও সম্মিলিত উদ্যোগের মাধ্যমে আমরা প্রান্তের কণ্ঠকে মূলধারায় নিয়ে আসি।',
-                'Bangladesh Tea Community Literature Council (BTCLC) works to preserve and amplify the literary and cultural identity of the tea community through publications, dialogue, and collective engagement.'
+                'বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ (BTCLC) একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সংগঠন যা চা-জনগোষ্ঠীর মধ্যে সাহিত্যচর্চা, সাংস্কৃতিক বিকাশ এবং সামাজিক সচেতনতা বৃদ্ধির জন্য কাজ করে।',
+                'Bangladesh Tea Community Literature Council (BTCLC) is a non-political, non-profit, and volunteer organization working to promote literature, cultural development, and social awareness among the tea community.'
               )}
             </p>
             <div className="flex flex-wrap gap-4">

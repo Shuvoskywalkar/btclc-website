@@ -7,37 +7,37 @@ import { BookOpen, Users, MessageCircle, GraduationCap, ArrowRight } from 'lucid
 const programs = [
   {
     icon: BookOpen,
-    title: { bn: 'সাহিত্য উৎসব', en: 'Literary Festival' },
+    title: { bn: 'উৎকর্ষ পত্রিকা', en: 'Utkorsha Magazine' },
     description: {
-      bn: 'বার্ষিক সাহিত্য উৎসব যেখানে চা জনগোষ্ঠীর লেখক ও কবিরা একত্রিত হন।',
-      en: 'Annual literary festival where writers and poets from the tea community come together.'
+      bn: 'চা-বাগানে সৃজনশীলতা ও রচনাত্মক প্রতিভার বিকাশ ঘটাতে বার্ষিক সাহিত্য পত্রিকা।',
+      en: 'Annual literary magazine to develop creativity and writing talent in tea gardens.'
+    },
+    href: '/publications/utkorsha'
+  },
+  {
+    icon: GraduationCap,
+    title: { bn: 'চা-সাহিত্য উৎসব', en: 'Tea Literature Festival' },
+    description: {
+      bn: 'চা-বাগানে সৃজনশীলতা ও রচনাত্মক প্রতিভার বিকাশ ঘটাতে বার্ষিক সাহিত্য প্রতিযোগিতা।',
+      en: 'Annual literary competition to develop creativity and writing talent in tea gardens.'
     },
     href: '/programs/literary-festival'
   },
   {
-    icon: GraduationCap,
-    title: { bn: 'সাহিত্য কর্মশালা', en: 'Writing Workshops' },
-    description: {
-      bn: 'তরুণ লেখকদের জন্য সৃজনশীল লেখালেখি ও প্রকাশনা বিষয়ক কর্মশালা।',
-      en: 'Creative writing and publishing workshops for young writers.'
-    },
-    href: '/programs/workshops'
-  },
-  {
     icon: MessageCircle,
-    title: { bn: 'সম্প্রদায় সংলাপ', en: 'Community Dialogue' },
+    title: { bn: 'সচেতনতামূলক কার্যক্রম', en: 'Awareness Programs' },
     description: {
-      bn: 'সাহিত্য ও সংস্কৃতি বিষয়ে মুক্ত আলোচনা ও মতবিনিময় সভা।',
-      en: 'Open discussions and exchange of ideas on literature and culture.'
+      bn: 'প্রত্যন্ত চা-বাগান অঞ্চলে সচেতনতামূলক আলোচনা, সংলাপ ও ক্যাম্পেইন।',
+      en: 'Awareness discussions, dialogues and campaigns in remote tea garden areas.'
     },
     href: '/programs/dialogue'
   },
   {
     icon: Users,
-    title: { bn: 'যুব কার্যক্রম', en: 'Youth Programs' },
+    title: { bn: 'দক্ষতা উন্নয়ন', en: 'Skill Development' },
     description: {
-      bn: 'তরুণ প্রজন্মের মধ্যে সাহিত্যিক চেতনা ও সাংস্কৃতিক সচেতনতা বিকাশ।',
-      en: 'Developing literary consciousness and cultural awareness among youth.'
+      bn: 'স্বেচ্ছাসেবকদের দক্ষতা উন্নয়ন ও তরুণ নেতৃত্ব গঠন কর্মসূচি।',
+      en: 'Volunteer skill development and youth leadership building programs.'
     },
     href: '/programs/youth'
   }

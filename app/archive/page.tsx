@@ -3,7 +3,7 @@
 import { LanguageProvider, useLanguage } from '@/lib/language-context'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
-import { FileText, FolderArchive, BookMarked, FileBarChart, Download, Eye, Calendar } from 'lucide-react'
+import { FileText, FolderArchive, BookMarked, Download, Eye, Calendar } from 'lucide-react'
 
 const documents = [
   {
@@ -11,61 +11,35 @@ const documents = [
     items: [
       {
         icon: FileText,
-        title: { bn: 'সংবিধান', en: 'Constitution' },
-        description: { bn: 'পরিষদের মূল সংবিধান ও নিয়মাবলী', en: 'Official constitution and bylaws of the council' },
-        date: { bn: '২০১৮', en: '2018' },
+        title: { bn: 'সংবিধান (খসড়া)', en: 'Constitution (Draft)' },
+        description: { bn: 'বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদের মূল সংবিধান ও নিয়মাবলী', en: 'Official constitution and bylaws of BTCLC' },
+        date: { bn: '২০২৬', en: '2026' },
         type: 'PDF',
-        size: '2.4 MB'
+        size: '245 KB',
+        downloadUrl: '/documents/constitution-btclc.pdf'
       },
       {
         icon: FolderArchive,
-        title: { bn: 'পোর্টফোলিও', en: 'Portfolio' },
-        description: { bn: 'আমাদের কাজের সংক্ষিপ্ত বিবরণ', en: 'Overview of our work and achievements' },
-        date: { bn: '২০২৪', en: '2024' },
+        title: { bn: 'প্রাতিষ্ঠানিক পোর্টফোলিও', en: 'Institutional Portfolio' },
+        description: { bn: 'আমাদের কাজের সংক্ষিপ্ত বিবরণ ও পরিকল্পনা', en: 'Overview of our work and strategic plans' },
+        date: { bn: '২০২৬', en: '2026' },
         type: 'PDF',
-        size: '8.5 MB'
+        size: '312 KB',
+        downloadUrl: '/documents/portfolio-btclc.pdf'
       }
     ]
   },
   {
-    category: { bn: 'বার্ষিক প্রতিবেদন', en: 'Annual Reports' },
-    items: [
-      {
-        icon: FileBarChart,
-        title: { bn: 'বার্ষিক প্রতিবেদন ২০২৩-২৪', en: 'Annual Report 2023-24' },
-        description: { bn: 'গত বছরের কার্যক্রম ও অর্জনের বিবরণ', en: 'Activities and achievements of the past year' },
-        date: { bn: '২০২৪', en: '2024' },
-        type: 'PDF',
-        size: '5.2 MB'
-      },
-      {
-        icon: FileBarChart,
-        title: { bn: 'বার্ষিক প্রতিবেদন ২০২২-২৩', en: 'Annual Report 2022-23' },
-        description: { bn: 'আগের বছরের কার্যক্রম ও অর্জন', en: 'Activities and achievements of previous year' },
-        date: { bn: '২০২৩', en: '2023' },
-        type: 'PDF',
-        size: '4.8 MB'
-      }
-    ]
-  },
-  {
-    category: { bn: 'প্রকাশনা সংগ্রহ', en: 'Publications Archive' },
+    category: { bn: 'পরিকল্পিত প্রকাশনা', en: 'Planned Publications' },
     items: [
       {
         icon: BookMarked,
-        title: { bn: 'উৎকর্ষ সংগ্রহ (২০১৯-২০২৪)', en: 'Utkorsha Collection (2019-2024)' },
-        description: { bn: 'সকল সংখ্যার সম্পূর্ণ সংগ্রহ', en: 'Complete collection of all issues' },
-        date: { bn: '২০১৯-২০২৪', en: '2019-2024' },
-        type: 'Archive',
-        size: '156 MB'
-      },
-      {
-        icon: BookMarked,
-        title: { bn: 'বই সংগ্রহ', en: 'Book Collection' },
-        description: { bn: 'প্রকাশিত সকল বইয়ের তালিকা ও PDF', en: 'List and PDFs of all published books' },
-        date: { bn: '২০১৮-২০২৪', en: '2018-2024' },
-        type: 'Archive',
-        size: '89 MB'
+        title: { bn: 'উৎকর্ষ - প্রথম সংখ্যা', en: 'Utkorsha - First Issue' },
+        description: { bn: 'চা-সাহিত্য পত্রিকার প্রথম সংখ্যা (আসন্ন)', en: 'First issue of tea literature magazine (Coming Soon)' },
+        date: { bn: '২০২৬', en: '2026' },
+        type: 'Coming Soon',
+        size: '-',
+        downloadUrl: null
       }
     ]
   }
@@ -134,14 +108,31 @@ function ArchiveContent() {
                               <span>{item.size}</span>
                             </div>
                             <div className="flex gap-3">
-                              <button className="inline-flex items-center gap-1.5 text-tea-green text-sm font-medium hover:text-tea-green-dark transition-colors">
-                                <Eye size={14} />
-                                {t('দেখুন', 'View')}
-                              </button>
-                              <button className="inline-flex items-center gap-1.5 text-tea-green text-sm font-medium hover:text-tea-green-dark transition-colors">
-                                <Download size={14} />
-                                {t('ডাউনলোড', 'Download')}
-                              </button>
+                              {item.downloadUrl ? (
+                                <>
+                                  <a 
+                                    href={item.downloadUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1.5 text-tea-green text-sm font-medium hover:text-tea-green-dark transition-colors"
+                                  >
+                                    <Eye size={14} />
+                                    {t('দেখুন', 'View')}
+                                  </a>
+                                  <a 
+                                    href={item.downloadUrl}
+                                    download
+                                    className="inline-flex items-center gap-1.5 text-tea-green text-sm font-medium hover:text-tea-green-dark transition-colors"
+                                  >
+                                    <Download size={14} />
+                                    {t('ডাউনলোড', 'Download')}
+                                  </a>
+                                </>
+                              ) : (
+                                <span className="text-charcoal-light text-sm italic">
+                                  {t('শীঘ্রই আসছে', 'Coming Soon')}
+                                </span>
+                              )}
                             </div>
                           </div>
                         </div>
@@ -168,7 +159,7 @@ function ArchiveContent() {
             )}
           </p>
           <a
-            href="mailto:archive@btclc.org"
+            href="mailto:btclc.official@gmail.com"
             className="inline-flex items-center gap-2 px-8 py-4 bg-tea-green text-cream font-medium rounded hover:bg-tea-green-dark transition-colors"
           >
             {t('যোগাযোগ করুন', 'Contact Us')}

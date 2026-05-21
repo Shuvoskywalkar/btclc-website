@@ -21,13 +21,13 @@ const playfairDisplay = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: 'বাংলাদেশ চা জনগোষ্ঠী সাহিত্য পরিষদ | Bangladesh Tea Community Literature Council',
-  description: 'BTCLC works to preserve and amplify the literary and cultural identity of the tea community through publications, dialogue, and collective engagement.',
-  keywords: ['BTCLC', 'Bangladesh', 'Tea Community', 'Literature', 'Culture', 'চা জনগোষ্ঠী', 'সাহিত্য'],
-  authors: [{ name: 'BTCLC' }],
+  title: 'বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ | Bangladesh Tea Community Literature Council',
+  description: 'BTCLC - একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সংগঠন যা চা-জনগোষ্ঠীর মধ্যে সাহিত্যচর্চা, সাংস্কৃতিক বিকাশ এবং সামাজিক সচেতনতা বৃদ্ধির জন্য কাজ করে। A non-political, non-profit organization promoting literature and cultural development among the tea community.',
+  keywords: ['BTCLC', 'Bangladesh', 'Tea Community', 'Literature', 'Culture', 'চা-জনগোষ্ঠী', 'সাহিত্য পরিষদ', 'শ্রীমঙ্গল', 'উৎকর্ষ'],
+  authors: [{ name: 'BTCLC - Bangladesh Tea Community Literature Council' }],
   openGraph: {
-    title: 'Bangladesh Tea Community Literature Council',
-    description: 'Preserving and amplifying the literary and cultural identity of the tea community',
+    title: 'বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ | BTCLC',
+    description: 'প্রান্তের কণ্ঠকে সাহিত্যের মূলধারায় - Bringing Marginal Voices to the Literary Mainstream',
     type: 'website',
     locale: 'bn_BD',
     alternateLocale: 'en_US',

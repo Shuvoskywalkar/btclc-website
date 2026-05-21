@@ -13,34 +13,31 @@ function AboutContent() {
   const values = [
     {
       icon: Heart,
-      title: { bn: 'ঐতিহ্য সংরক্ষণ', en: 'Heritage Preservation' },
-      description: { bn: 'চা জনগোষ্ঠীর সমৃদ্ধ সাংস্কৃতিক ও সাহিত্যিক ঐতিহ্য সংরক্ষণ করা।', en: 'Preserving the rich cultural and literary heritage of the tea community.' }
+      title: { bn: 'সৃজনশীলতা উৎসাহিত', en: 'Encourage Creativity' },
+      description: { bn: 'চা-জনগোষ্ঠীর মধ্যে সৃজনশীলতা ও সাহিত্যচর্চা উৎসাহিত করা।', en: 'Encouraging creativity and literary practice among the tea community.' }
     },
     {
       icon: Users,
-      title: { bn: 'সম্প্রদায় ঐক্য', en: 'Community Unity' },
-      description: { bn: 'সাহিত্যের মাধ্যমে সম্প্রদায়ের মধ্যে ঐক্য ও সংহতি তৈরি করা।', en: 'Building unity and solidarity within the community through literature.' }
+      title: { bn: 'সাংস্কৃতিক বিকাশ', en: 'Cultural Development' },
+      description: { bn: 'চা-জনগোষ্ঠীর সাংস্কৃতিক বিকাশ ও ঐতিহ্য সংরক্ষণ।', en: 'Cultural development and heritage preservation of the tea community.' }
     },
     {
       icon: BookOpen,
-      title: { bn: 'জ্ঞান বিস্তার', en: 'Knowledge Sharing' },
-      description: { bn: 'সাহিত্য ও সংস্কৃতি বিষয়ক জ্ঞান ছড়িয়ে দেওয়া।', en: 'Spreading knowledge about literature and culture.' }
+      title: { bn: 'সামাজিক সচেতনতা', en: 'Social Awareness' },
+      description: { bn: 'কার্যক্রম, প্রচারণা ও কর্মশালার মাধ্যমে সামাজিক সচেতনতা বৃদ্ধি করা।', en: 'Raising social awareness through programs, campaigns and workshops.' }
     },
     {
       icon: Award,
-      title: { bn: 'উৎকর্ষ সাধন', en: 'Excellence' },
-      description: { bn: 'সাহিত্যিক উৎকর্ষতা অর্জনে সচেষ্ট থাকা।', en: 'Striving for literary excellence in all endeavors.' }
+      title: { bn: 'তরুণ নেতৃত্ব', en: 'Youth Leadership' },
+      description: { bn: 'তরুণদের নেতৃত্ব ও দক্ষতা উন্নয়ন।', en: 'Developing leadership and skills among youth.' }
     }
   ]
 
   const timeline = [
-    { year: '২০১৮', bn: 'পরিষদ প্রতিষ্ঠা', en: 'Council Founded' },
-    { year: '২০১৯', bn: 'উৎকর্ষ পত্রিকা প্রথম প্রকাশ', en: 'First Issue of Utkorsha Published' },
-    { year: '২০২০', bn: 'প্রথম সাহিত্য উৎসব', en: 'First Literary Festival' },
-    { year: '২০২১', bn: 'যুব কার্যক্রম শুরু', en: 'Youth Programs Launched' },
-    { year: '২০২২', bn: 'সম্প্রদায় সংলাপ উদ্যোগ', en: 'Community Dialogue Initiative' },
-    { year: '২০২৩', bn: '৫০০+ সদস্য অর্জন', en: 'Reached 500+ Members' },
-    { year: '২০২৪', bn: 'ডিজিটাল সংগ্রহশালা চালু', en: 'Digital Archive Launched' },
+    { year: '২০২৬', bn: 'পরিষদ প্রতিষ্ঠা', en: 'Council Founded' },
+    { year: '২০২৬', bn: 'উৎকর্ষ পত্রিকা প্রথম সংখ্যা প্রকাশনার পরিকল্পনা', en: 'Planning First Issue of Utkorsha Magazine' },
+    { year: '২০২৬', bn: 'চা-সাহিত্য উৎসব আয়োজনের পরিকল্পনা', en: 'Planning Tea Literature Festival' },
+    { year: '২০২৬', bn: 'স্বেচ্ছাসেবক দক্ষতা উন্নয়ন কর্মসূচি', en: 'Volunteer Skill Development Program' },
   ]
 
   return (
@@ -57,8 +54,8 @@ function AboutContent() {
             </h1>
             <p className="text-charcoal-light text-lg md:text-xl leading-relaxed">
               {t(
-                'আমরা চা জনগোষ্ঠীর সাহিত্যিক ও সাংস্কৃতিক পরিচয় সংরক্ষণ, বিকাশ ও বিস্তারে নিবেদিত একটি অলাভজনক সংগঠন।',
-                'We are a non-profit organization dedicated to preserving, developing, and amplifying the literary and cultural identity of the tea community.'
+                'আমরা একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সংগঠন যা চা-জনগোষ্ঠীর মধ্যে সাহিত্যচর্চা, সাংস্কৃতিক বিকাশ এবং সামাজিক সচেতনতা বৃদ্ধির জন্য কাজ করে।',
+                'We are a non-political, non-profit, and volunteer organization working to promote literature, cultural development, and social awareness among the tea community.'
               )}
             </p>
           </div>
@@ -76,20 +73,20 @@ function AboutContent() {
               <div className="space-y-4 text-charcoal-light leading-relaxed">
                 <p>
                   {t(
-                    'বাংলাদেশের চা বাগানগুলোতে বসবাসকারী জনগোষ্ঠীর একটি সমৃদ্ধ সাংস্কৃতিক ও সাহিত্যিক ঐতিহ্য রয়েছে। কিন্তু এই ঐতিহ্য দীর্ঘদিন ধরে অবহেলিত ছিল, মূলধারার সাহিত্য জগতে তাদের কণ্ঠস্বর শোনা যেত না।',
-                    'The community living in the tea gardens of Bangladesh has a rich cultural and literary heritage. However, this heritage has been neglected for a long time, and their voices were not heard in the mainstream literary world.'
+                    'বাংলাদেশের চা-বাগানভিত্তিক জনগোষ্ঠী দীর্ঘদিন ধরে সামাজিক, শিক্ষাগত ও সাংস্কৃতিকভাবে প্রান্তিক অবস্থানে রয়েছে। এই জনগোষ্ঠীর নিজস্ব ভাষা, ঐতিহ্য ও সাংস্কৃতিক বৈচিত্র্য থাকা সত্ত্বেও তা প্রাতিষ্ঠানিকভাবে সংরক্ষণ, বিকাশ ও প্রচারের যথাযথ সুযোগ এখনো সীমিত।',
+                    'The tea garden-based community of Bangladesh has been in a marginalized position socially, educationally, and culturally for a long time. Despite having their own language, traditions, and cultural diversity, the opportunity to preserve, develop, and promote it institutionally is still limited.'
                   )}
                 </p>
                 <p>
                   {t(
-                    '২০১৮ সালে একদল উৎসাহী তরুণ ও অভিজ্ঞ লেখক মিলে গড়ে তোলেন বাংলাদেশ চা জনগোষ্ঠী সাহিত্য পরিষদ। লক্ষ্য ছিল একটাই - প্রান্তের কণ্ঠকে সাহিত্যের মূলধারায় নিয়ে আসা।',
-                    'In 2018, a group of enthusiastic young people and experienced writers came together to form the Bangladesh Tea Community Literature Council. The goal was singular - to bring marginal voices into the literary mainstream.'
+                    'এই বাস্তবতায়, "বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ (BTCLC)" একটি নবগঠিত, অরাজনৈতিক ও অলাভজনক সংগঠন হিসেবে আত্মপ্রকাশ করেছে। সংগঠনটির লক্ষ্য হলো চা-জনগোষ্ঠীর ভিতরে সাহিত্যচর্চা, সাংস্কৃতিক বিকাশ এবং সামাজিক সচেতনতা বৃদ্ধির জন্য একটি অন্তর্ভুক্তিমূলক ও টেকসই প্ল্যাটফর্ম তৈরি করা।',
+                    'In this reality, "Bangladesh Tea Community Literature Council (BTCLC)" has emerged as a newly formed, non-political and non-profit organization. The organization\'s goal is to create an inclusive and sustainable platform for promoting literature, cultural development, and social awareness within the tea community.'
                   )}
                 </p>
                 <p>
                   {t(
-                    'আজ আমরা ৫০০+ সদস্যের একটি পরিবার। আমাদের প্রকাশনা, কর্মশালা, সাহিত্য উৎসব এবং সম্প্রদায় সংলাপের মাধ্যমে আমরা চা জনগোষ্ঠীর সাহিত্যিক ও সাংস্কৃতিক পরিচয়কে জাতীয় ও আন্তর্জাতিক পরিসরে তুলে ধরছি।',
-                    'Today we are a family of 500+ members. Through our publications, workshops, literary festivals, and community dialogues, we are bringing the literary and cultural identity of the tea community to national and international prominence.'
+                    'BTCLC বিশ্বাস করে যে, সাহিত্য ও সংস্কৃতির মাধ্যমে একটি জনগোষ্ঠীর আত্মপরিচয় শক্তিশালী হয় এবং তাদের কণ্ঠস্বর মূলধারায় পৌঁছানোর সুযোগ তৈরি হয়।',
+                    'BTCLC believes that through literature and culture, a community\'s identity is strengthened and the opportunity is created for their voice to reach the mainstream.'
                   )}
                 </p>
               </div>
@@ -122,8 +119,8 @@ function AboutContent() {
               </h3>
               <p className="text-charcoal-light leading-relaxed">
                 {t(
-                  'চা জনগোষ্ঠীর সাহিত্যিক ও সাংস্কৃতিক ঐতিহ্য সংরক্ষণ, বিকাশ ও প্রচারের মাধ্যমে তাদের পরিচয়কে জাতীয় ও আন্তর্জাতিক পরিসরে তুলে ধরা এবং নতুন প্রজন্মের মধ্যে সাহিত্যিক চেতনা জাগ্রত করা।',
-                  'To preserve, develop, and promote the literary and cultural heritage of the tea community, bringing their identity to national and international prominence, while awakening literary consciousness among the new generation.'
+                  'চা-জনগোষ্ঠীর মধ্যে সাহিত্য, সংস্কৃতি ও সামাজিক সচেতনতার চর্চাকে প্রাতিষ্ঠানিকীকরণ করা এবং তাদের জ্ঞানভিত্তিক সক্ষমতা, সাংস্কৃতিক পরিচয় ও সামাজিক অংশগ্রহণকে সুসংহত করা।',
+                  'To institutionalize the practice of literature, culture, and social awareness among the tea community, and to consolidate their knowledge-based capacity, cultural identity, and social participation.'
                 )}
               </p>
             </div>
