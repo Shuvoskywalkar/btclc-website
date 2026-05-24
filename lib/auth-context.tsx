@@ -8,12 +8,13 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth'
 import { doc, getDoc } from 'firebase/firestore'
-import { auth, db } from '@/lib/firebase'
+import { auth, db, isFirebaseConfigured } from '@/lib/firebase'
 
 interface AuthContextType {
   user: User | null
   isAdmin: boolean
   loading: boolean
+  isConfigured: boolean
   signIn: (email: string, password: string) => Promise<{ success: boolean; error?: string }>
   signOut: () => Promise<void>
 }
@@ -26,10 +27,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    // If Firebase is not configured, just set loading to false
+    if (!isFirebaseConfigured || !auth) {
+      setLoading(false)
+      return
+    }
+
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       setUser(user)
       
-      if (user) {
+      if (user && db) {
         // Check if user is admin
         try {
           const adminDoc = await getDoc(doc(db, 'admins', user.email!))
@@ -49,6 +56,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }, [])
 
   const signIn = async (email: string, password: string) => {
+    if (!isFirebaseConfigured || !auth || !db) {
+      return { success: false, error: 'Firebase is not configured. Please add your Firebase credentials.' }
+    }
+
     try {
       const result = await signInWithEmailAndPassword(auth, email, password)
       
@@ -67,6 +78,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   const signOut = async () => {
+    if (!auth) return
+    
     try {
       await firebaseSignOut(auth)
     } catch (error) {
@@ -75,7 +88,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   }
 
   return (
-    <AuthContext.Provider value={{ user, isAdmin, loading, signIn, signOut }}>
+    <AuthContext.Provider value={{ user, isAdmin, loading, isConfigured: isFirebaseConfigured, signIn, signOut }}>
       {children}
     </AuthContext.Provider>
   )

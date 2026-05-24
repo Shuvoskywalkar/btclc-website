@@ -1,6 +1,7 @@
 "use client"
 
 import { LanguageProvider } from '@/lib/language-context'
+import { FirestoreDataProvider } from '@/lib/firestore-data'
 import { Navbar } from '@/components/navbar'
 import { Footer } from '@/components/footer'
 import { HeroSection } from '@/components/home/hero-section'
@@ -15,6 +16,7 @@ import { JoinSection } from '@/components/home/join-section'
 export default function HomePage() {
   return (
     <LanguageProvider>
+      <FirestoreDataProvider>
       <div className="min-h-screen flex flex-col">
         <Navbar />
         <main className="flex-1">
@@ -29,6 +31,7 @@ export default function HomePage() {
         </main>
         <Footer />
       </div>
+      </FirestoreDataProvider>
     </LanguageProvider>
   )
 }
