@@ -16,8 +16,8 @@ export function AboutSection() {
           </span>
           <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-6 text-balance">
             {t(
-              'চা জনগোষ্ঠীর সাহিত্যিক ঐতিহ্যের সংরক্ষক',
-              'Guardians of the Tea Community\'s Literary Heritage'
+              'চা জনগোষ্ঠীর সাহিত্যিক জাগরণের পথিক',
+              'Pioneers of the Tea Community\'s Literary Heritage'
             )}
           </h2>
           <p className="text-charcoal-light text-lg leading-relaxed mb-8">

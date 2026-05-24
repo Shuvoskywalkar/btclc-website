@@ -38,7 +38,7 @@ export function VoicesSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <span className="inline-block text-gold font-medium text-sm uppercase tracking-wider mb-4">
-            {t('সম্প্রদায়ের কণ্ঠ', 'Community Voices')}
+            {t('শুভাকাঙ্ক্ষীদের বাণী', 'Community Voices')}
           </span>
           <h2 className="font-serif text-3xl md:text-4xl text-cream mb-4 text-balance">
             {t('চা জনগোষ্ঠীর কথা', 'Stories from the Tea Community')}

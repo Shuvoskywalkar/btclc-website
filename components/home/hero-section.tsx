@@ -25,7 +25,7 @@ export function HeroSection() {
             </h1>
             <p className="text-charcoal-light text-lg md:text-xl leading-relaxed mb-8 max-w-xl">
               {t(
-                'বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ (BTCLC) একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সংগঠন যা চা-জনগোষ্ঠীর মধ্যে সাহিত্যচর্চা, সাংস্কৃতিক বিকাশ এবং সামাজিক সচেতনতা বৃদ্ধির জন্য কাজ করে।',
+                'বাংলাদেশ চা-জনগোষ্ঠী সাহিত্য পরিষদ (BTCLC) একটি অরাজনৈতিক, অলাভজনক ও স্বেচ্ছাসেবী সংগঠন যা চা-জনগোষ্ঠীর মধ্যে সাহিত্যচর্চা, সাংস্কৃতিক বিকাশ এবং সামাজিক সচেতনতা বৃদ্ধির উদ্দেশ্যে কাজ করে।',
                 'Bangladesh Tea Community Literature Council (BTCLC) is a non-political, non-profit, and volunteer organization working to promote literature, cultural development, and social awareness among the tea community.'
               )}
             </p>

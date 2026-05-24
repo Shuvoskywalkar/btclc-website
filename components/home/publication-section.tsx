@@ -17,7 +17,7 @@ export function PublicationSection() {
             <div className="relative aspect-[3/4] max-w-sm mx-auto lg:mx-0 rounded-lg overflow-hidden shadow-2xl">
               <Image
                 src="/images/utkorsha-magazine.jpg"
-                alt={t('উৎকর্ষ পত্রিকা', 'Utkorsha Magazine')}
+                alt={t('উৎকর্ষ সাহিত্য পত্রিকা', 'Utkarsha Magazine')}
                 fill
                 className="object-cover"
               />
@@ -33,7 +33,7 @@ export function PublicationSection() {
               {t('বিশেষ প্রকাশনা', 'Featured Publication')}
             </span>
             <h2 className="font-serif text-3xl md:text-4xl text-charcoal mb-2">
-              {t('উৎকর্ষ', 'Utkorsha')}
+              {t('উৎকর্ষ', 'Utkarsha')}
             </h2>
             <p className="text-tea-green font-medium mb-4">
               {t('চা জনগোষ্ঠীর প্রথম সাহিত্য পত্রিকা', 'The First Literary Magazine of the Tea Community')}
@@ -50,7 +50,7 @@ export function PublicationSection() {
                 {t('সর্বশেষ সংখ্যা', 'Latest Issue')}
               </p>
               <p className="font-serif text-lg text-charcoal">
-                {t('উৎকর্ষ - বর্ষ ৫, সংখ্যা ২ (২০২৪)', 'Utkorsha - Volume 5, Issue 2 (2024)')}
+                {t('উৎকর্ষ - বর্ষ ২, সংখ্যা ২ (২০২৬)', 'Utkorsha - Volume 2, Issue 2 (2026)')}
               </p>
             </div>
 
