@@ -2,29 +2,39 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/lib/language-context'
-import { FileText, FolderArchive, BookMarked, FileBarChart, ArrowRight, Download } from 'lucide-react'
+import { useFirestoreData } from '@/lib/firestore-data'
+import { FileText, FolderArchive, BookMarked, FileBarChart, ArrowRight, Download, LucideIcon } from 'lucide-react'
 
-const archives = [
+// Icon mapping for archive items
+const iconMap: Record<string, LucideIcon> = {
+  'file-text': FileText,
+  'folder-archive': FolderArchive,
+  'book-marked': BookMarked,
+  'file-bar-chart': FileBarChart,
+}
+
+// Default archives as fallback
+const defaultArchives = [
   {
-    icon: FileText,
+    icon: 'file-text',
     title: { bn: 'সংবিধান', en: 'Constitution' },
     description: { bn: 'পরিষদের মূল সংবিধান ও নিয়মাবলী', en: 'Official constitution and bylaws' },
     type: 'PDF'
   },
   {
-    icon: FolderArchive,
+    icon: 'folder-archive',
     title: { bn: 'পোর্টফোলিও', en: 'Portfolio' },
     description: { bn: 'আমাদের কাজের সংক্ষিপ্ত বিবরণ', en: 'Overview of our work and achievements' },
     type: 'PDF'
   },
   {
-    icon: BookMarked,
+    icon: 'book-marked',
     title: { bn: 'প্রকাশনা সংগ্রহ', en: 'Publications' },
     description: { bn: 'সকল প্রকাশিত বই ও পত্রিকা', en: 'All published books and magazines' },
     type: 'Archive'
   },
   {
-    icon: FileBarChart,
+    icon: 'file-bar-chart',
     title: { bn: 'প্রতিবেদন', en: 'Reports' },
     description: { bn: 'বার্ষিক প্রতিবেদন ও কার্যক্রম', en: 'Annual reports and activities' },
     type: 'PDF'
@@ -33,6 +43,18 @@ const archives = [
 
 export function ArchiveSection() {
   const { language, t } = useLanguage()
+  const { archive: firestoreArchive, loading } = useFirestoreData()
+
+  // Use Firestore data if available, otherwise fallback to default
+  const archives = firestoreArchive.length > 0 
+    ? firestoreArchive.map(a => ({
+        icon: a.icon || 'file-text',
+        title: a.title,
+        description: a.description,
+        type: a.type,
+        fileUrl: a.fileUrl
+      }))
+    : defaultArchives
 
   return (
     <section className="py-16 md:py-24">
@@ -57,7 +79,7 @@ export function ArchiveSection() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {archives.map((item, index) => {
-            const Icon = item.icon
+            const Icon = iconMap[item.icon] || FileText
             return (
               <div
                 key={index}
@@ -77,10 +99,22 @@ export function ArchiveSection() {
                 <p className="text-charcoal-light text-sm mb-4">
                   {language === 'bn' ? item.description.bn : item.description.en}
                 </p>
-                <button className="inline-flex items-center gap-2 text-tea-green text-sm font-medium hover:text-tea-green-dark transition-colors">
-                  <Download size={14} />
-                  {t('ডাউনলোড', 'Download')}
-                </button>
+                {item.fileUrl ? (
+                  <a
+                    href={item.fileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-tea-green text-sm font-medium hover:text-tea-green-dark transition-colors"
+                  >
+                    <Download size={14} />
+                    {t('ডাউনলোড', 'Download')}
+                  </a>
+                ) : (
+                  <button className="inline-flex items-center gap-2 text-tea-green text-sm font-medium hover:text-tea-green-dark transition-colors">
+                    <Download size={14} />
+                    {t('ডাউনলোড', 'Download')}
+                  </button>
+                )}
               </div>
             )
           })}

@@ -3,9 +3,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { useLanguage } from '@/lib/language-context'
+import { useFirestoreData } from '@/lib/firestore-data'
 import { ArrowRight } from 'lucide-react'
 
-const galleryImages = [
+// Default gallery images as fallback
+const defaultGalleryImages = [
   { src: '/images/gallery-1.jpg', alt: { bn: 'চা বাগানের শ্রমিক', en: 'Tea garden workers' } },
   { src: '/images/gallery-2.jpg', alt: { bn: 'বই ও পাণ্ডুলিপি', en: 'Books and manuscripts' } },
   { src: '/images/gallery-3.jpg', alt: { bn: 'সম্প্রদায় সমাবেশ', en: 'Community gathering' } },
@@ -14,6 +16,15 @@ const galleryImages = [
 
 export function GallerySection() {
   const { language, t } = useLanguage()
+  const { gallery: firestoreGallery, loading } = useFirestoreData()
+
+  // Use Firestore data if available, otherwise fallback to default
+  const galleryImages = firestoreGallery.length > 0 
+    ? firestoreGallery.slice(0, 4).map(img => ({
+        src: img.imageUrl,
+        alt: img.caption
+      }))
+    : defaultGalleryImages
 
   return (
     <section className="py-16 md:py-24">
