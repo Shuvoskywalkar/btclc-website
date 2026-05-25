@@ -27,19 +27,22 @@ export interface SiteSettings {
   }
 }
 
-// Hero section
+// Hero section - matches frontend component structure
 export interface HeroSection {
+  tagline: BilingualText
   title: BilingualText
-  subtitle: BilingualText
-  ctaText: BilingualText
-  ctaLink: string
-  imageUrl?: string
+  description: BilingualText
+  primaryButtonText: BilingualText
+  secondaryButtonText: BilingualText
+  image: string
+  imageAlt: BilingualText
 }
 
-// About section
+// About section - matches frontend component structure
 export interface AboutSection {
+  tagline: BilingualText
   title: BilingualText
-  content: BilingualText
+  description: BilingualText
 }
 
 // Program item
@@ -102,7 +105,7 @@ export interface Voice {
   quote: BilingualText
   name: BilingualText
   role: BilingualText
-  imageUrl?: string
+  image?: string
   order: number
 }
 
@@ -118,4 +121,17 @@ export const COLLECTIONS = {
   EVENTS: 'events',
   ARCHIVE: 'archive',
   VOICES: 'voices',
+  CONTACT_SUBMISSIONS: 'contact-submissions',
 } as const
+
+// Contact form submission
+export interface ContactSubmission {
+  id?: string
+  name: string
+  email: string
+  phone?: string
+  subject: string
+  message: string
+  createdAt: Date
+  read: boolean
+}

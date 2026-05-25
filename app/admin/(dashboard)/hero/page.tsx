@@ -6,19 +6,19 @@ import { BilingualInput } from '@/components/admin/bilingual-input'
 import { ImageUpload } from '@/components/admin/image-upload'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
 import { useDocument } from '@/hooks/use-firestore'
 import { COLLECTIONS, type HeroSection, type BilingualText } from '@/lib/types'
 import { toast } from 'sonner'
 import { Loader2, Save } from 'lucide-react'
 
 const defaultHero: HeroSection = {
+  tagline: { bn: '', en: '' },
   title: { bn: '', en: '' },
-  subtitle: { bn: '', en: '' },
-  ctaText: { bn: '', en: '' },
-  ctaLink: '',
-  imageUrl: '',
+  description: { bn: '', en: '' },
+  primaryButtonText: { bn: '', en: '' },
+  secondaryButtonText: { bn: '', en: '' },
+  image: '',
+  imageAlt: { bn: '', en: '' },
 }
 
 export default function HeroSectionPage() {
@@ -68,6 +68,12 @@ export default function HeroSectionPage() {
             </CardHeader>
             <CardContent className="space-y-6">
               <BilingualInput
+                label="Tagline"
+                value={formData.tagline}
+                onChange={(tagline: BilingualText) => setFormData({ ...formData, tagline })}
+              />
+
+              <BilingualInput
                 label="Title"
                 value={formData.title}
                 onChange={(title: BilingualText) => setFormData({ ...formData, title })}
@@ -75,31 +81,34 @@ export default function HeroSectionPage() {
               />
 
               <BilingualInput
-                label="Subtitle"
-                value={formData.subtitle}
-                onChange={(subtitle: BilingualText) => setFormData({ ...formData, subtitle })}
+                label="Description"
+                value={formData.description}
+                onChange={(description: BilingualText) => setFormData({ ...formData, description })}
                 multiline
               />
 
               <BilingualInput
-                label="Call to Action Text"
-                value={formData.ctaText}
-                onChange={(ctaText: BilingualText) => setFormData({ ...formData, ctaText })}
+                label="Primary Button Text"
+                value={formData.primaryButtonText}
+                onChange={(primaryButtonText: BilingualText) => setFormData({ ...formData, primaryButtonText })}
               />
 
-              <div className="space-y-2">
-                <Label>Call to Action Link</Label>
-                <Input
-                  value={formData.ctaLink}
-                  onChange={(e) => setFormData({ ...formData, ctaLink: e.target.value })}
-                  placeholder="/about or https://..."
-                />
-              </div>
+              <BilingualInput
+                label="Secondary Button Text"
+                value={formData.secondaryButtonText}
+                onChange={(secondaryButtonText: BilingualText) => setFormData({ ...formData, secondaryButtonText })}
+              />
 
               <ImageUpload
                 label="Hero Image"
-                value={formData.imageUrl}
-                onChange={(imageUrl) => setFormData({ ...formData, imageUrl })}
+                value={formData.image}
+                onChange={(image) => setFormData({ ...formData, image })}
+              />
+
+              <BilingualInput
+                label="Image Alt Text"
+                value={formData.imageAlt}
+                onChange={(imageAlt: BilingualText) => setFormData({ ...formData, imageAlt })}
               />
 
               <div className="flex justify-end pt-4">

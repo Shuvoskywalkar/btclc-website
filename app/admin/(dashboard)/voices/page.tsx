@@ -38,7 +38,7 @@ const defaultVoice: Omit<Voice, 'id'> = {
   quote: { bn: '', en: '' },
   name: { bn: '', en: '' },
   role: { bn: '', en: '' },
-  imageUrl: '',
+  image: '',
   order: 0,
 }
 
@@ -56,7 +56,7 @@ export default function VoicesPage() {
         quote: item.quote,
         name: item.name,
         role: item.role,
-        imageUrl: item.imageUrl,
+        image: item.image || '',
         order: item.order,
       })
     } else {
@@ -152,8 +152,8 @@ export default function VoicesPage() {
                   />
                   <ImageUpload
                     label="Photo (optional)"
-                    value={formData.imageUrl}
-                    onChange={(imageUrl) => setFormData({ ...formData, imageUrl })}
+                    value={formData.image}
+                    onChange={(image) => setFormData({ ...formData, image })}
                   />
                   <div className="space-y-2">
                     <Label>Display Order</Label>
@@ -180,9 +180,9 @@ export default function VoicesPage() {
               <Card key={item.id}>
                 <CardContent className="flex gap-4 p-4">
                   <GripVertical className="mt-1 h-5 w-5 cursor-move shrink-0 text-muted-foreground" />
-                  {item.imageUrl ? (
+                  {item.image ? (
                     <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-muted">
-                      <Image src={item.imageUrl} alt={item.name.en} fill className="object-cover" />
+                      <Image src={item.image} alt={item.name.en} fill className="object-cover" />
                     </div>
                   ) : (
                     <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-tea-green/10">

@@ -1,14 +1,15 @@
 "use client"
 
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react'
-import { collection, getDocs, doc, getDoc, query, orderBy, limit, where } from 'firebase/firestore'
+import { collection, getDocs, doc, getDoc, query, orderBy, limit } from 'firebase/firestore'
 import { db, isFirebaseConfigured } from './firebase'
+import { COLLECTIONS } from './types'
 import type { 
-  HeroContent, 
-  AboutContent, 
+  HeroSection, 
+  AboutSection, 
   Program, 
   Publication, 
-  GalleryImage, 
+  GalleryItem, 
   Event, 
   ArchiveItem, 
   Voice, 
@@ -16,11 +17,11 @@ import type {
 } from './types'
 
 interface FirestoreData {
-  hero: HeroContent | null
-  about: AboutContent | null
+  hero: HeroSection | null
+  about: AboutSection | null
   programs: Program[]
   publications: Publication[]
-  gallery: GalleryImage[]
+  gallery: GalleryItem[]
   events: Event[]
   archive: ArchiveItem[]
   voices: Voice[]
@@ -38,7 +39,7 @@ const FirestoreDataContext = createContext<FirestoreData>({
   archive: [],
   voices: [],
   settings: null,
-  loading: false, // Default to false when Firebase isn't configured
+  loading: false,
 })
 
 export function useFirestoreData() {
@@ -56,11 +57,10 @@ export function FirestoreDataProvider({ children }: { children: ReactNode }) {
     archive: [],
     voices: [],
     settings: null,
-    loading: isFirebaseConfigured, // Only show loading if Firebase is configured
+    loading: isFirebaseConfigured,
   })
 
   useEffect(() => {
-    // Skip fetching if Firebase is not configured - components will use fallback data
     if (!isFirebaseConfigured || !db) {
       setData(prev => ({ ...prev, loading: false }))
       return
@@ -70,7 +70,7 @@ export function FirestoreDataProvider({ children }: { children: ReactNode }) {
       if (!db) return
       
       try {
-        // Fetch all data in parallel
+        // Fetch all data in parallel using correct collection paths
         const [
           heroSnap,
           aboutSnap,
@@ -82,23 +82,23 @@ export function FirestoreDataProvider({ children }: { children: ReactNode }) {
           voicesSnap,
           settingsSnap,
         ] = await Promise.all([
-          getDoc(doc(db, 'content', 'hero')),
-          getDoc(doc(db, 'content', 'about')),
-          getDocs(query(collection(db, 'programs'), orderBy('order', 'asc'))),
-          getDocs(query(collection(db, 'publications'), where('isPublished', '==', true), orderBy('publishDate', 'desc'))),
-          getDocs(query(collection(db, 'gallery'), where('isPublished', '==', true), orderBy('order', 'asc'), limit(8))),
-          getDocs(query(collection(db, 'events'), where('isPublished', '==', true), orderBy('date', 'desc'), limit(6))),
-          getDocs(query(collection(db, 'archive'), where('isPublished', '==', true), orderBy('order', 'asc'))),
-          getDocs(query(collection(db, 'voices'), where('isPublished', '==', true), orderBy('order', 'asc'), limit(3))),
-          getDoc(doc(db, 'content', 'settings')),
+          getDoc(doc(db, COLLECTIONS.HERO, 'main')),
+          getDoc(doc(db, COLLECTIONS.ABOUT, 'main')),
+          getDocs(query(collection(db, COLLECTIONS.PROGRAMS), orderBy('order', 'asc'))),
+          getDocs(query(collection(db, COLLECTIONS.PUBLICATIONS), orderBy('order', 'asc'))),
+          getDocs(query(collection(db, COLLECTIONS.GALLERY), orderBy('order', 'asc'), limit(8))),
+          getDocs(query(collection(db, COLLECTIONS.EVENTS), orderBy('date', 'desc'), limit(6))),
+          getDocs(query(collection(db, COLLECTIONS.ARCHIVE), orderBy('order', 'asc'))),
+          getDocs(query(collection(db, COLLECTIONS.VOICES), orderBy('order', 'asc'), limit(3))),
+          getDoc(doc(db, COLLECTIONS.SITE_SETTINGS, 'main')),
         ])
 
         setData({
-          hero: heroSnap.exists() ? (heroSnap.data() as HeroContent) : null,
-          about: aboutSnap.exists() ? (aboutSnap.data() as AboutContent) : null,
+          hero: heroSnap.exists() ? (heroSnap.data() as HeroSection) : null,
+          about: aboutSnap.exists() ? (aboutSnap.data() as AboutSection) : null,
           programs: programsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Program)),
           publications: publicationsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Publication)),
-          gallery: gallerySnap.docs.map(d => ({ id: d.id, ...d.data() } as GalleryImage)),
+          gallery: gallerySnap.docs.map(d => ({ id: d.id, ...d.data() } as GalleryItem)),
           events: eventsSnap.docs.map(d => ({ id: d.id, ...d.data() } as Event)),
           archive: archiveSnap.docs.map(d => ({ id: d.id, ...d.data() } as ArchiveItem)),
           voices: voicesSnap.docs.map(d => ({ id: d.id, ...d.data() } as Voice)),

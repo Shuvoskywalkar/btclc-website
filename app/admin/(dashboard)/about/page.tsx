@@ -11,8 +11,9 @@ import { toast } from 'sonner'
 import { Loader2, Save } from 'lucide-react'
 
 const defaultAbout: AboutSection = {
+  tagline: { bn: '', en: '' },
   title: { bn: '', en: '' },
-  content: { bn: '', en: '' },
+  description: { bn: '', en: '' },
 }
 
 export default function AboutSectionPage() {
@@ -62,6 +63,12 @@ export default function AboutSectionPage() {
             </CardHeader>
             <CardContent className="space-y-6">
               <BilingualInput
+                label="Tagline"
+                value={formData.tagline}
+                onChange={(tagline: BilingualText) => setFormData({ ...formData, tagline })}
+              />
+
+              <BilingualInput
                 label="Section Title"
                 value={formData.title}
                 onChange={(title: BilingualText) => setFormData({ ...formData, title })}
@@ -69,9 +76,9 @@ export default function AboutSectionPage() {
               />
 
               <BilingualInput
-                label="Content"
-                value={formData.content}
-                onChange={(content: BilingualText) => setFormData({ ...formData, content })}
+                label="Description"
+                value={formData.description}
+                onChange={(description: BilingualText) => setFormData({ ...formData, description })}
                 multiline
                 required
               />
