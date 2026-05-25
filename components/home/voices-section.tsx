@@ -1,9 +1,11 @@
 "use client"
 
 import { useLanguage } from '@/lib/language-context'
+import { useFirestoreData } from '@/lib/firestore-data'
 import { Quote } from 'lucide-react'
 
-const voices = [
+// Default voices as fallback
+const defaultVoices = [
   {
     quote: {
       bn: 'চা বাগানে জন্ম আমার, এই মাটিতেই আমার শিকড়। সাহিত্য পরিষদ আমাদের কণ্ঠস্বরকে পৃথিবীর কাছে পৌঁছে দিচ্ছে।',
@@ -32,13 +34,17 @@ const voices = [
 
 export function VoicesSection() {
   const { language, t } = useLanguage()
+  const { voices: firestoreVoices, loading } = useFirestoreData()
+
+  // Use Firestore data if available, otherwise fallback to default
+  const voices = firestoreVoices.length > 0 ? firestoreVoices : defaultVoices
 
   return (
     <section className="py-16 md:py-24 bg-tea-green">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <span className="inline-block text-gold font-medium text-sm uppercase tracking-wider mb-4">
-            {t('সম্প্রদায়ের কণ্ঠ', 'Community Voices')}
+            {t('শুভাকাঙ্ক্ষীদের বাণী', 'Community Voices')}
           </span>
           <h2 className="font-serif text-3xl md:text-4xl text-cream mb-4 text-balance">
             {t('চা জনগোষ্ঠীর কথা', 'Stories from the Tea Community')}
@@ -48,10 +54,16 @@ export function VoicesSection() {
         <div className="grid md:grid-cols-3 gap-6">
           {voices.map((voice, index) => (
             <div
-              key={index}
+              key={voice.id || index}
               className="bg-cream/10 backdrop-blur-sm p-6 md:p-8 rounded-lg"
             >
-              <Quote className="w-8 h-8 text-gold mb-4" />
+              {voice.image ? (
+                <div className="w-12 h-12 rounded-full overflow-hidden mb-4">
+                  <img src={voice.image} alt="" className="w-full h-full object-cover" />
+                </div>
+              ) : (
+                <Quote className="w-8 h-8 text-gold mb-4" />
+              )}
               <blockquote className="text-cream/90 leading-relaxed mb-6 text-balance">
                 {language === 'bn' ? voice.quote.bn : voice.quote.en}
               </blockquote>

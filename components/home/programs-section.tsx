@@ -2,11 +2,21 @@
 
 import Link from 'next/link'
 import { useLanguage } from '@/lib/language-context'
-import { BookOpen, Users, MessageCircle, GraduationCap, ArrowRight } from 'lucide-react'
+import { useFirestoreData } from '@/lib/firestore-data'
+import { BookOpen, Users, MessageCircle, GraduationCap, ArrowRight, LucideIcon } from 'lucide-react'
 
-const programs = [
+// Icon mapping for Firestore programs
+const iconMap: Record<string, LucideIcon> = {
+  'book-open': BookOpen,
+  'graduation-cap': GraduationCap,
+  'message-circle': MessageCircle,
+  'users': Users,
+}
+
+// Default programs as fallback
+const defaultPrograms = [
   {
-    icon: BookOpen,
+    icon: 'book-open',
     title: { bn: 'উৎকর্ষ পত্রিকা', en: 'Utkorsha Magazine' },
     description: {
       bn: 'চা-বাগানে সৃজনশীলতা ও রচনাত্মক প্রতিভার বিকাশ ঘটাতে বার্ষিক সাহিত্য পত্রিকা।',
@@ -15,7 +25,7 @@ const programs = [
     href: '/publications/utkorsha'
   },
   {
-    icon: GraduationCap,
+    icon: 'graduation-cap',
     title: { bn: 'চা-সাহিত্য উৎসব', en: 'Tea Literature Festival' },
     description: {
       bn: 'চা-বাগানে সৃজনশীলতা ও রচনাত্মক প্রতিভার বিকাশ ঘটাতে বার্ষিক সাহিত্য প্রতিযোগিতা।',
@@ -24,7 +34,7 @@ const programs = [
     href: '/programs/literary-festival'
   },
   {
-    icon: MessageCircle,
+    icon: 'message-circle',
     title: { bn: 'সচেতনতামূলক কার্যক্রম', en: 'Awareness Programs' },
     description: {
       bn: 'প্রত্যন্ত চা-বাগান অঞ্চলে সচেতনতামূলক আলোচনা, সংলাপ ও ক্যাম্পেইন।',
@@ -33,7 +43,7 @@ const programs = [
     href: '/programs/dialogue'
   },
   {
-    icon: Users,
+    icon: 'users',
     title: { bn: 'দক্ষতা উন্নয়ন', en: 'Skill Development' },
     description: {
       bn: 'স্বেচ্ছাসেবকদের দক্ষতা উন্নয়ন ও তরুণ নেতৃত্ব গঠন কর্মসূচি।',
@@ -45,6 +55,17 @@ const programs = [
 
 export function ProgramsSection() {
   const { language, t } = useLanguage()
+  const { programs: firestorePrograms, loading } = useFirestoreData()
+
+  // Use Firestore data if available, otherwise fallback to default
+  const programs = firestorePrograms.length > 0 
+    ? firestorePrograms.map(p => ({
+        icon: p.icon || 'book-open',
+        title: p.title,
+        description: p.description,
+        href: p.href || `/programs/${p.id}`
+      }))
+    : defaultPrograms
 
   return (
     <section className="py-16 md:py-24 bg-cream-dark">
@@ -66,7 +87,7 @@ export function ProgramsSection() {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {programs.map((program, index) => {
-            const Icon = program.icon
+            const Icon = iconMap[program.icon] || BookOpen
             return (
               <Link
                 key={index}
